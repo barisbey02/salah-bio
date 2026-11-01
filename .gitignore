@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-ssr
+# Generated from public/portrait.jpg by `npm run images`
+public/img
+*.log
+.DS_Store
