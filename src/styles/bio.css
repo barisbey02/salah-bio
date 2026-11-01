@@ -1,0 +1,313 @@
+/* ---------- Card 1: profile ---------- */
+
+.profile {
+  display: grid;
+  padding: var(--inset);
+}
+
+.profile__photo {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-inner);
+  background: var(--tint);
+}
+
+.profile__body {
+  padding-block: 20px 24px;
+  padding-inline: 16px;
+}
+
+.profile__name {
+  font-size: 1.875rem;
+  line-height: 1.1;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.profile__role {
+  margin-block-start: 4px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.socials {
+  display: flex;
+  gap: 2px;
+  margin-block: 14px 12px;
+  margin-inline-start: -10px; /* align the first glyph with the text, keep the 44px tap target */
+  padding: 0;
+  list-style: none;
+}
+
+.socials__link {
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 50%;
+  color: var(--accent);
+  transition:
+    background-color var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+
+.socials__link:hover {
+  background: var(--accent-soft);
+}
+
+.socials__link:active {
+  transform: scale(0.92);
+}
+
+.profile__tagline {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.profile__tagline strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (min-width: 40rem) {
+  .profile {
+    grid-template-columns: 14rem 1fr;
+    align-items: center;
+  }
+
+  .profile__body {
+    padding-block: 16px;
+    padding-inline: 28px 24px;
+  }
+
+  .profile__name {
+    font-size: 2rem;
+  }
+}
+
+/* ---------- Card 2: list of rows ---------- */
+
+.list {
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+}
+
+.list > li + li {
+  border-block-start: 1px solid var(--hairline);
+}
+
+/* Inset the divider so it lines up with the row content, not the card edge. */
+.list > li {
+  margin-inline: 12px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-block-size: 64px;
+}
+
+.row__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.row__sub {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+/* Email row */
+.row--email {
+  flex-wrap: wrap;
+  padding-block: 6px;
+}
+
+.row__main {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  padding-block: 6px;
+  border-radius: 8px;
+}
+
+.row__main:hover .row__sub {
+  color: var(--ink);
+}
+
+.copy {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  justify-content: center;
+  padding-inline: 10px;
+  margin-inline-end: -10px;
+  border-radius: 999px;
+  color: var(--accent);
+  transition:
+    background-color var(--fast) var(--ease),
+    transform var(--fast) var(--ease);
+}
+
+.copy:hover {
+  background: var(--accent-soft);
+}
+
+.copy:active {
+  transform: scale(0.94);
+}
+
+.copy__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(calc(var(--dir) * 6px));
+  transition:
+    opacity var(--fast) var(--ease),
+    transform var(--medium) var(--ease);
+}
+
+.copy__icon {
+  display: grid;
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.copy__glyph {
+  grid-area: 1 / 1;
+  transition:
+    opacity var(--fast) var(--ease),
+    transform var(--medium) var(--ease);
+}
+
+.copy__glyph--check {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.copy[data-state='copied'] .copy__label {
+  opacity: 1;
+  transform: none;
+}
+
+.copy[data-state='copied'] .copy__glyph--copy {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.copy[data-state='copied'] .copy__glyph--check {
+  opacity: 1;
+  transform: none;
+}
+
+.row__manual {
+  flex-basis: 100%;
+  margin-block-end: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--tint);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.row__manual span {
+  color: var(--ink);
+  font-weight: 600;
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+/* Link rows */
+.row--link {
+  margin-inline: -12px;
+  padding-inline: 12px;
+  border-radius: 18px;
+  transition: background-color var(--fast) var(--ease);
+}
+
+.row--link:hover {
+  background: var(--tint);
+}
+
+.row--link:active {
+  background: var(--hairline);
+}
+
+.row--link .row__title {
+  flex: 1;
+}
+
+.row__badge {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.row__arrow {
+  flex: none;
+  color: var(--muted);
+  transition:
+    transform var(--medium) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.row--link:hover .row__arrow,
+.row--link:active .row__arrow {
+  color: var(--accent);
+  transform: translate(calc(var(--dir) * 2px), -2px);
+}
+
+/* The → arrow for on-site links nudges sideways instead of up. Logical direction for RTL. */
+.row--link[href^='/']:hover .row__arrow,
+.row--link[href^='/']:active .row__arrow {
+  transform: translateX(calc(var(--dir) * 3px));
+}
+
+/* Mirror the arrows in right-to-left layouts. */
+[dir='rtl'] .row__arrow {
+  scale: -1 1;
+}
+
+/* ---------- Footer pill ---------- */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding-block-start: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 36px;
+  padding-inline: 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  transition:
+    color var(--fast) var(--ease),
+    border-color var(--fast) var(--ease),
+    background-color var(--fast) var(--ease);
+}
+
+.pill:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+  background: rgb(255 255 255 / 0.5);
+}

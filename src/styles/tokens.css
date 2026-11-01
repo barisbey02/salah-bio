@@ -1,0 +1,68 @@
+/*
+ * Design tokens. Change colors, radii and shadows here.
+ * Rule: beige tones (--bg, --tint, --hairline) are for surfaces and lines only,
+ * never for text or icons. Text colors below pass WCAG AA on both white and --bg.
+ */
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/geist/files/geist-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallback so the swap to Geist barely moves text. */
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  size-adjust: 103%;
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+:root {
+  /* Surfaces (stone beige) */
+  --bg: #efeae2;
+  --card: #ffffff;
+  --tint: #f6f3ee;
+  --hairline: #e6e0d6;
+
+  /* Text */
+  --ink: #1c1a17; /* 17:1 on white */
+  --muted: #5f5b55; /* 6.7:1 on white, 5.6:1 on --bg */
+
+  /* Accent (interactive elements) */
+  --accent: #1f4fd1; /* 6.8:1 with white */
+  --accent-press: #1a42b0;
+  --accent-soft: #e9eefc; /* hover tint behind blue icons */
+  --on-accent: #ffffff;
+
+  /* Neutral border for unselected chips (gray, not beige) */
+  --border: #d4d0ca;
+
+  /* Shape */
+  --radius-card: 28px;
+  --inset: 8px;
+  --radius-inner: calc(var(--radius-card) - var(--inset)); /* concentric with the card */
+  --radius-chip: 12px;
+  --shadow-card: 0 1px 2px rgb(40 32 20 / 0.04), 0 12px 32px -8px rgb(40 32 20 / 0.1);
+
+  /* Type */
+  --font: 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 150ms;
+  --medium: 250ms;
+
+  /* Horizontal direction for transforms: 1 in LTR, -1 in RTL. */
+  --dir: 1;
+}
+
+[dir='rtl'] {
+  --dir: -1;
+}
